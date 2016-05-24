@@ -29,8 +29,13 @@ while(LocInitiate == false) {
 //円形移動
 while(true) {
   if (speed() == 0) { //移動処理
+    if (Going == 1) {
+      SwimAngle -= 175;
+    }
+    else {
+      SwimAngle += 175;
+    }
     Going *= -1;
-    SwimAngle += 180;
   }
   swim(SwimAngle, 50);
   if (Going == 1) {
@@ -46,8 +51,13 @@ while(true) {
     if (Distance <= 70) {
       cannon(SwimAngle + (i * 20), Distance);
       if (Distance <= 30 && (i <= 2 || i >= 16)) {
+        if (Going == 1) {
+          SwimAngle -= 175;
+        }
+        else {
+          SwimAngle += 175;
+        }
         Going *= -1;
-        SwimAngle += 180;
       }
     }
   }
