@@ -7,14 +7,14 @@ var Distance = 0;
 if (loc_x() < 50 && loc_y() > 50) { //左上：黄色ポジション
   swim(0,50);
 }
-if (loc_x() > 50 && loc_y() > 50) { //右上：黒色ポジション
+else if (loc_x() > 50 && loc_y() > 50) { //右上：黒色ポジション
   swim(180,50);
 }
-if (loc_x() < 50 && loc_y() < 50) { //左下：緑色ポジション
+else if (loc_x() < 50 && loc_y() < 50) { //左下：緑色ポジション
   swim(0,50);
   SwimAngle = 180;
 }
-if (loc_x() > 50 && loc_y() < 50) { //右下：赤色ポジション
+else { //右下：赤色ポジション
   swim(180,50);
   SwimAngle = 180;
 }
@@ -29,8 +29,13 @@ while(LocInitiate == false) {
 //円形移動
 while(true) {
   if (speed() == 0) { //移動処理
+    if (Going == 1) {
+      SwimAngle -= 175;
+    }
+    else {
+      SwimAngle += 175;
+    }
     Going *= -1;
-    SwimAngle += 180;
   }
   swim(SwimAngle, 50);
   if (Going == 1) {
@@ -46,8 +51,13 @@ while(true) {
     if (Distance <= 70) {
       cannon(SwimAngle + (i * 20), Distance);
       if (Distance <= 30 && (i <= 2 || i >= 16)) {
+        if (Going == 1) {
+          SwimAngle -= 175;
+        }
+        else {
+          SwimAngle += 175;
+        }
         Going *= -1;
-        SwimAngle += 180;
       }
     }
   }
